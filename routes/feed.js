@@ -1,17 +1,7 @@
-// routes/feed.js
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const feedCtrl = require("../controllers/feed");
 
-/* GET feed data. */
-router.get("/", async function (req, res, next) {
-	try {
-		// Wait for the feedItems Promise to resolve
-		const items = await feedItems;
-		// Send the feed items as a response
-		res.json(items);
-	} catch (err) {
-		next(err);
-	}
-});
+router.get("/", feedCtrl.getFeedItems);
 
 module.exports = router;
